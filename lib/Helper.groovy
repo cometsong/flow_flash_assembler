@@ -74,9 +74,6 @@ class CollectInitialMetadata {
 
     public static void print_metadata(nextflow.script.WorkflowMetadata workflow){
 
-        def treeDag = new File("${workflow.projectDir}/.treeDag.json").text
-        def forkTree = new File("${workflow.projectDir}/.forkTree.json").text
-
         def metadataJson = "{'nfMetadata':{'scriptId':'${workflow.scriptId}',\
 'scriptName':'${workflow.scriptName}',\
 'profile':'${workflow.profile}',\
@@ -87,9 +84,8 @@ class CollectInitialMetadata {
 'sessionId':'${workflow.sessionId}',\
 'projectDir':'${workflow.projectDir}',\
 'launchDir':'${workflow.launchDir}',\
-'startTime':'${workflow.start}',\
-'dag':${treeDag},\
-'forks':${forkTree}}}"
+'startTime':'${workflow.start}'\
+}}"
 
         def json = metadataJson.replaceAll("'", '"')
 
